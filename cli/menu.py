@@ -2,6 +2,38 @@ from core.images.dataset_utils import download_dataset, show_dataset_summary
 from core.images.image_manager import ImageManager
 
 def show_menu():
+    """ Display the main menu and handles user interaction.
+
+    This funcion presents a menu of options to the user,
+    allowing them to interact with radiography images.
+
+    It includes options for downloading the dataset, 
+    viewing summaries,listing,images, and managing images 
+    adding, deleting, and possibly renaming.
+
+    Parameters:
+    None
+
+    Returns:
+    None
+
+    See Also:
+        download_dataset: Function to download the dataset.
+        show_dataset_summary: Funcion to show dataset summary.
+        ImageManger: Class for image management.
+    Example:
+        >>> show_menu()
+        ---COVID IMAGE MANAGEMENT CLI---
+             print("\n--- COVID Image Management CLI ---")
+        1. Download images from Kaggle
+        2. Show dataset summary
+        3. List images by category
+        4. Add new image
+        5. Delete image
+        6. Rename image
+        7. Exit
+        Select an option:
+    """
     manager = ImageManager()
 
     while True:
