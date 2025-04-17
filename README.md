@@ -1,23 +1,42 @@
-# COVID Image Management CLI
+# 🦠 COVID Image Manager CLI
 
-This is an object-oriented Python project designed to manage medical images (based on the COVID-19 Radiography Dataset). It allows downloading the dataset from Kaggle, adding, deleting, listing, and renaming images, as well as managing metadata in a modular and extensible way.
+This project is a modular, object-oriented Python command-line tool for managing **medical images** and their **associated metadata** from the COVID-19 Radiography Dataset.
+
+It includes two independent management systems:
+- 📁 Image Management (for handling image files)
+- 📊 Metadata Management (for handling metadata stored in `.xlsx` format)
+
+---
 
 ## 📦 Project Structure
 
 ```
-covid_project/
-├── main.py
-├── .env.example
-├── requirements.txt
-├── cli/
-│   └── menu.py
-├── core/
-│   └── images/
-│       ├── dataset_utils.py
-│       ├── image_manager.py
-│       └── image_record.py
-└── data/
-    └── COVID-19_Radiography_Dataset/
+covid-image-manager/
+├── cli/                     # Main CLI interfaces
+│   ├── menu.py              # Main menu entry point
+│   ├── image_menu.py        # Submenu for image CRUD operations
+│   └── metadata_menu.py     # Submenu for metadata CRUD operations
+│
+├── core/                    # Business logic
+│   ├── images/
+│   │   ├── image_manager.py
+│   │   ├── dataset_utils.py
+│   │   └── image_record.py
+│   └── metadata/
+│       ├── metadata_manager.py
+│       ├── metadata_record.py
+│       └── metadata_validator.py
+│
+├── metadata/                # Metadata files (.xlsx) by category
+│   ├── COVID.metadata.xlsx
+│   ├── Normal.metadata.xlsx
+│   ├── Lung_Opacity.metadata.xlsx
+│   └── Viral Pneumonia.metadata.xlsx
+│
+├── data/                    # Image dataset (if used directly)
+├── .env.example             # Example environment variables
+├── requirements.txt         # Python dependencies
+└── main.py                  # Optional entry point
 ```
 
 ## ⚙️ Requirements
@@ -49,27 +68,22 @@ cp .env.example .env
 python3 main.py
 ```
 
-You will see an interactive menu:
+---
 
-```
---- COVID Image Management ---
-1. Download images from Kaggle
-2. Show dataset summary
-3. List images by category
-4. Add new image
-5. Delete image
-6. Rename image
-7. Exit
-```
+## 🚀 Features
 
-## 💡 Features
+### 🖼 Image Management (`cli/image_menu.py`)
+- List images by category
+- Add new images from a source path
+- Delete images from a category
 
-- Download the dataset from Kaggle using `.env` credentials
-- Console interface (CLI)
-- Modular category management (`COVID`, `NORMAL`, etc.)
-- Manual image addition with metadata
-- PEP8-compliant code and object-oriented architecture
+### 📑 Metadata Management (`cli/metadata_menu.py`)
+- Load all `.xlsx` metadata files into memory
+- List metadata records by category
+- Add, edit, and delete records in-memory (non-persistent)
+- Smart handling of `size` values like `"256*256"`
 
+---
 ## 🧪 .env File Example
 
 Store your Kaggle credentials like this:
