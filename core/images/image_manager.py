@@ -55,3 +55,26 @@ class ImageManager:
 
         files = os.listdir(folder)
         return [ImageRecord(f, category, os.path.join(folder, f)) for f in files]
+
+    def edit_image(self, old_category, old_filename, new_category=None, new_filename=None):
+        """
+        Renames and/or moves an image to a new filename or category.
+
+        Parameters:
+        - old_category: Current category of the image
+        - old_filename: Current filename
+        - new_category: New category (optional)
+        - new_filename: New filename (optional)
+        """
+        src_path = self.get_image_path(old_category, old_filename)
+
+        if not os.path.exists(src_path):
+            raise FileNotFoundError("Original image not found.")
+
+        new_category = new_category or old_category
+        new_filename = new_filename or old_filename
+
+        dst_path = self.get_image_path(new_category, new_filename)
+        os.makedirs(os.path.dirname(dst_path), exist_ok=True)
+
+        shutil.move(src_path, dst_path)

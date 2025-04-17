@@ -3,7 +3,7 @@ from core.images.image_manager import ImageManager
 
 def image_crud_menu():
     print("\n--- Image Management CLI ---")
-    manager = ImageManager()
+    image_manager = ImageManager()
 
     while True:
         print("\n1. Download images from Kaggle")
@@ -19,9 +19,9 @@ def image_crud_menu():
             download_dataset()
 
         elif option == "2":
-            category = input("Enter category (COVID, NORMAL, Viral Pneumonia): ")
+            category = input("Enter category (COVID, Normal, Lung_Opacity, Viral Pneumonia): ")
             try:
-                images = manager.list_images(category)
+                images = image_manager.list_images(category)
                 print(f"\nImages in '{category}':")
                 for img in images:
                     print(f" - {img}")
@@ -30,21 +30,35 @@ def image_crud_menu():
 
         elif option == "3":
             path = input("Full path to the image file: ")
-            category = input("Category (COVID, NORMAL, Viral Pneumonia): ")
+            category = input("Category (COVID, Normal, Lung_Opacity, Viral Pneumonia): ")
             new_name = input("New filename (optional): ").strip() or None
             try:
-                result = manager.add_image(path, category, new_name)
+                result = image_manager.add_image(path, category, new_name)
                 print(f"Image added: {result}")
             except Exception as e:
                 print(f"Error: {e}")
 
         elif option == "4":
-            print("Rename image is not implemented yet.") 
+            old_category = input("Current category of the image: (COVID, Normal, Lung_Opacity, Viral Pneumonia)").strip()
+            old_filename = input("Current filename: ").strip()
+            new_category = input("New category (leave blank to keep current): ").strip() or None
+            new_filename = input("New filename (leave blank to keep current): ").strip() or None
+
+            try:
+                image_manager.edit_image(
+                    old_category=old_category,
+                    old_filename=old_filename,
+                    new_category=new_category,
+                    new_filename=new_filename
+                )
+                print("Image edited successfully.")
+            except Exception as e:
+                print(f"Error editing image: {e}")
 
         elif option == "5":
             category = input("Category of the image: ")
             filename = input("Filename to delete: ")
-            if manager.delete_image(category, filename):
+            if image_manager.delete_image(category, filename):
                 print("Image deleted.")
             else:
                 print("Image not found.")
