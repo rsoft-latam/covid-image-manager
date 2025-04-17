@@ -15,7 +15,7 @@ def show_menu():
         elif choice == "2":
             metadata_crud_menu()
         elif choice == "0":
-            print("👋 Exiting...")
+            print("Exiting...")
             break
         else:
             print("Invalid option. Try again.")

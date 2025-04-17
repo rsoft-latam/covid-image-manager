@@ -7,12 +7,11 @@ def image_crud_menu():
 
     while True:
         print("\n1. Download images from Kaggle")
-        print("2. Show dataset summary")
-        print("3. List images by category")
-        print("4. Add new image")
+        print("2. List images by category (COVID, Normal, Lung_Opacity, Viral Pneumonia)")
+        print("3. Add new image")
+        print("4. Edit image")
         print("5. Delete image")
-        print("6. Rename image")
-        print("7. Exit")
+        print("0. Return to main menu")
 
         option = input("Select an option: ")
 
@@ -20,9 +19,6 @@ def image_crud_menu():
             download_dataset()
 
         elif option == "2":
-            show_dataset_summary()
-
-        elif option == "3":
             category = input("Enter category (COVID, NORMAL, Viral Pneumonia): ")
             try:
                 images = manager.list_images(category)
@@ -32,7 +28,7 @@ def image_crud_menu():
             except Exception as e:
                 print(f"Error: {e}")
 
-        elif option == "4":
+        elif option == "3":
             path = input("Full path to the image file: ")
             category = input("Category (COVID, NORMAL, Viral Pneumonia): ")
             new_name = input("New filename (optional): ").strip() or None
@@ -42,6 +38,9 @@ def image_crud_menu():
             except Exception as e:
                 print(f"Error: {e}")
 
+        elif option == "4":
+            print("Rename image is not implemented yet.") 
+
         elif option == "5":
             category = input("Category of the image: ")
             filename = input("Filename to delete: ")
@@ -50,9 +49,7 @@ def image_crud_menu():
             else:
                 print("Image not found.")
 
-        elif option == "6":
-            print("Rename image is not implemented yet.")
-        elif option == "7":
+        elif option == "0":
             print("Exiting....")
             break
         else:

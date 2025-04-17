@@ -9,11 +9,11 @@ def metadata_crud_menu():
     metadata_path = os.path.join(os.path.dirname(__file__), "..", "metadata")
 
     while True:
-        print("\n1. Load ALL metadata into memory")
-        print("2. List metadata by category")
-        print("3. Add new metadata record")
-        print("4. Edit metadata record")
-        print("5. Delete metadata record")
+        print("\n1. Load All metadata into memory")
+        print("2. List metadata by category (COVID, Normal, Lung_Opacity, Viral Pneumonia)")
+        print("3. Add new metadata")
+        print("4. Edit metadata")
+        print("5. Delete metadata")
         print("0. Return to main menu")
 
         choice = input("Choose an option: ").strip()
@@ -49,7 +49,7 @@ def metadata_crud_menu():
                 try:
                     data = {
                         "file name": input("File name: ").strip(),
-                        "format": input("Format (e.g. jpg): ").strip(),
+                        "format": input("Format (JPG, PNG): ").strip(),
                         "size": input("Size (e.g. 256*256 or 123.45): ").strip(),
                         "url": input("URL: ").strip()
                     }
@@ -91,13 +91,14 @@ def metadata_crud_menu():
                 filename = input("File name to delete: ").strip()
                 try:
                     managers[category].delete_record(filename)
-                    print("🗑️ Metadata record deleted.")
+                    print("Metadata record deleted.")
                 except Exception as e:
                     print(f"Error deleting record: {e}")
             else:
                 print("Category not found.")
 
         elif choice == "0":
+            print("Exiting....")
             break
 
         else:
