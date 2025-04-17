@@ -39,6 +39,8 @@ covid-image-manager/
 └── main.py                  # Optional entry point
 ```
 
+![UML Class Diagram](images/POO.svg)
+
 ## ⚙️ Requirements
 
 - Python 3.7 or higher
