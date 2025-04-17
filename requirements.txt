@@ -6,3 +6,4 @@ scikit-learn
 tqdm
 requests
 python-dotenv
+openpyxl>=3.1.2
