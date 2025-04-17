@@ -85,7 +85,7 @@ def show_menu():
         elif option == "6":
             print("⚠️ Rename image is not implemented yet.")  # opcional si no tienes rename
         elif option == "7":
-            print("👋 Exiting...")
+            print("👋 Exiting....")
             break
         else:
             print("❌ Invalid option.")
