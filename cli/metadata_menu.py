@@ -3,6 +3,15 @@ from core.metadata.metadata_manager import MetadataManager
 from core.metadata.metadata_validator import MetadataValidator
 
 def metadata_crud_menu():
+    """
+    Implements the command-line interface for metadata management.
+
+    Presents a menu with options to load metadata by category, list them,
+    add new metadata records, edit, and delete existing records.
+    Requires metadata to be loaded into memory before performing most
+    operations. Interacts with the MetadataManager class to manage the data.
+    The menu runs in a loop until the user chooses the exit option.
+    """
     print("\n--- Metadata Management CLI ---")
     managers = {}
     metadata_loaded = False
@@ -103,3 +112,4 @@ def metadata_crud_menu():
 
         else:
             print("Invalid option. Try again.")
+

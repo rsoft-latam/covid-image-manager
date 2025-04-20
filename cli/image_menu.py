@@ -2,6 +2,14 @@ from core.images.dataset_utils import download_dataset, show_dataset_summary
 from core.images.image_manager import ImageManager
 
 def image_crud_menu():
+    """
+    Implements the command-line interface for image management.
+
+    Presents a menu with options to download the dataset, list images by category,
+    add, edit, and delete images. Interacts with the ImageManager class to perform
+    management operations and with functions for dataset download.
+    The menu runs in a loop until the user chooses to  exit.
+    """
     print("\n--- Image Management CLI ---")
     image_manager = ImageManager()
 
