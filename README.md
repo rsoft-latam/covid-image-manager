@@ -2,6 +2,9 @@
 
 This project is a modular, object-oriented Python command-line tool for managing **medical images** and their **associated metadata** from the COVID-19 Radiography Dataset.
 
+🎥 **Watch the demo video:** [COVID Image Manager CLI - Demo on YouTube](https://www.youtube.com/watch?v=WtWRuME6oWM)
+
+
 It includes two independent management systems:
 - 📁 Image Management (for handling image files)
 - 📊 Metadata Management (for handling metadata stored in `.xlsx` format)
@@ -99,4 +102,9 @@ KAGGLE_KEY=your_api_token
 
 ## ✍️ Author
 
-Ricardo Pari – Final project for the Software Engineering Fundamentals course in Data Science
+Final project for the Software Engineering Fundamentals course in Data Science
+
+- Carlos Sandoval Siles
+- Javier Blanco Guibert
+- Juana Quiete Mojica
+- Ricardo Pari

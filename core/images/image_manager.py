@@ -4,10 +4,32 @@ from .image_record import ImageRecord
 
 
 class ImageManager:
+
     """
-    Provides file operations for medical images:
-    add, delete, and list images grouped by category.
+    Manages file operations for medical images.
+
+    This class provides methods to add, delete, list, and edit
+    (move/rename) image files, organized by categories within
+    a base directory structure.
+
+    Attributes:
+        base_dir (str): Base directory where images are stored.
+
+    Methods:
+        __init__(base_dir="data/COVID-19_Radiography_Dataset"):
+            Initializes the manager with a base directory.
+        get_image_path(category, filename):
+            Returns the full path to a specific image.
+        add_image(source_path, category, new_filename=None):
+            Adds an image file to a category, creating directories if necessary.
+        delete_image(category, filename):
+            Deletes an image file by category and filename.
+        list_images(category):
+            Lists all image files within a category.
+        edit_image(old_category, old_filename, new_category=None, new_filename=None):
+            Renames and/or moves an image file to a new location or name.
     """
+    
 
     def __init__(self, base_dir="data/COVID-19_Radiography_Dataset"):
         self.base_dir = base_dir
